@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <title>Biodata Angkatan Informatika 2024</title>
+    <style>
+        body {
+            font-family: 'Times New Roman';
+            margin: 0;
+            padding: 0;
+            background-color: #F8F1F1;
+            background-image: url('img/pexels-karolina-grabowska-6634140.jpg');
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            max-width: 100%;
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        header {
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 0px;
+        }
+
+        #searchInput {
+            margin-top: 10px;
+            padding: 10px;
+            width: 80%;
+            max-width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        h1 {
+            font-size: 32px;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin: 0;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            perspective: 1000px;
+            position: relative;
+            width: 100%;
+        }
+
+        .page {
+            width: 90%;
+            max-width: 320px;
+            height: 95%;
+            position: absolute;
+            backface-visibility: hidden;
+            transition: transform 1s ease, z-index 1s ease;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 11px 19px 2px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .page1 {
+            z-index: 3;
+            transform-origin: left;
+        }
+
+        .page2 {
+            z-index: 2;
+            transform: rotateY(180deg);
+            transform-origin: left;
+        }
+
+        .page3 {
+            z-index: 1;
+            transform: rotateY(180deg);
+            transform-origin: right;
+        }
+
+        .flipped .page1 {
+            transform: rotateY(-180deg);
+            z-index: 1;
+        }
+
+        .flipped .page2 {
+            transform: rotateY(0deg);
+            z-index: 2;
+        }
+
+        .flipped .page3 {
+            transform: rotateY(0deg);
+            z-index: 3;
+        }
+
+        .profile img, .biodata3 img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 100%;
+            margin-bottom: 0px;
+        }
+
+        .profile h2, .biodata h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #2980b9;
+        }
+
+        footer {
+            padding: 20px;
+            text-align: center;
+            margin-top: auto;
+        }
+
+        .biodata-diri, .biodata-d2 {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .biodata-diri td, .biodata-d2 td {
+            padding: 5px;
+            border: 1px solid black;
+            color: black;
+        }
+
+        .biodata-diri td:first-child, .biodata-d2 td:first-child {
+            width: 100px;
+            margin-top: 70px;
+        }
+
+        p {
+            font-family: 'Times New Roman';
+            letter-spacing: 0.06em;
+            word-spacing: 0.05em;
+            text-transform: capitalize;
+            margin: 20px 10px 30px 5px;
+            color: #fff;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            background-color: #007BFF;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Media Queries untuk Responsivitas */
+        @media (max-width: 768px) {
+            .page {
+                width: 100%;
+                max-width: 100%;
+                height: auto;
+                padding: 15px;
+            }
+
+            .profile img, .biodata3 img {
+                width: 100px;
+                height: 100px;
+            }
+
+            header h1 {
+                font-size: 24px;
+            }
+
+            footer {
+                padding: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 20px;
+            }
+
+            p {
+                font-size: 14px;
+            }
+
+            .button {
+                padding: 8px 15px;
+                font-size: 14px;
+            }
+
+            .page {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Bio Data Angkatan 2024</h1>
+        <p>Teknik Informatika</p>
+        <a href="index.html" class="button">Kembali</a>
+        <input type="text" id="searchInput" placeholder="Cari berdasarkan nama lengkap..." />
+    </header>
+    <main id="pagesContainer">
+        <div class="page page1">
+            <div class="profile">
+                <img src="img/Picsart_FIX.jpg" alt="Profile Picture">
+                <h2>About Me</h2>
+                <p>perkenalkan temen temen semua nama aku dedy dari prodi teknik informatika, fakultas Teknik dengan NIM:240411100115. nama lengkap aku Dedy Nurohim untuk Tempat Tanggal Lahir  ku di Lamongan 15 Desember 2004 lalu untuk  alamatku di Lamongan, dan temen" bisa hubungi aku di nomor 085730190883</p>
+            </div>
+        </div>
+        <div class="page page2">
+            <div class="biodata">
+                <h2>Biodata</h2>
+                <table class="biodata-diri">
+                    <tr>
+                        <td>Nama Lengkap</td>
+                        <td>Dedy Nurohim</td>
+                    </tr>
+                    <tr>
+                        <td>NIM</td>
+                        <td>240411100115</td>
+                    </tr>
+                    <tr>
+                        <td>No Hp</td>
+                        <td>085730190883</td>
+                    </tr>
+                    <tr>
+                        <td>TTL</td>
+                        <td>Lamomgan,15 Desember 2004</td>
+                    </tr>
+                    <tr>
+                        <td>Alamat</td>
+                        <td>Lamongan</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>© 2024 Dedy Nurohim</p>
+    </footer>
+    <script>
+        let currentPage = 0;
+        let biodata = []; // Variabel global untuk menyimpan data biodata
+
+        function createPage(data, index) {
+            const page = document.createElement('div');
+            page.classList.add('page');
+            page.classList.add(`page${index + 1}`);
+
+            page.innerHTML = `
+                <div class="biodata3">
+                    <h2>Biodata ${index + 1}</h2>
+                    <img src="${data.fotoformal}" alt="Profile Picture">
+                    <table class="biodata-d2">
+                        <tr>
+                            <td>Nama Lengkap</td>
+                            <td>${data.nama}</td>
+                        </tr>
+                        <tr>
+                            <td>NIM</td>
+                            <td>${data.nim}</td>
+                        </tr>
+                        <tr>
+                            <td>No Hp</td>
+                            <td>${data.no}</td>
+                        </tr>
+                        <tr>
+                            <td>TTL</td>
+                            <td>${data.ttl}</td>
+                        </tr>
+                        <tr>
+                            <td>Alamat</td>
+                            <td>${data.alamat}</td>
+                        </tr>
+                    </table>
+                </div>
+            `;
+
+            return page;
+        }
+
+        function loadPages() {
+            fetch('data.json')
+                .then(response => response.json())
+                .then(data => {
+                    biodata = data; // Simpan data biodata global
+                    console.log('Data biodata:', biodata); // Log data biodata untuk debugging
+                    const pagesContainer = document.getElementById('pagesContainer');
+                    pagesContainer.innerHTML = ''; // Clear existing pages
+
+                    data.forEach((entry, index) => {
+                        const page = createPage(entry, index);
+                        pagesContainer.appendChild(page);
+                    });
+
+                    updatePages(); // Memastikan halaman pertama yang ditampilkan dengan benar
+                })
+                .catch(error => console.error('Error loading data:', error));
+        }
+
+        function updatePages() {
+            console.log('Updating pages. Current page:', currentPage); // Debug log
+            const pages = document.querySelectorAll('.page');
+            pages.forEach((page, index) => {
+                if (index < currentPage) {
+                    page.style.transform = `rotateY(-180deg)`;
+                } else if (index === currentPage) {
+                    page.style.transform = `rotateY(0deg)`;
+                } else {
+                    page.style.transform = `rotateY(180deg)`;
+                }
+            });
+        }
+
+        function searchPages(query) {
+            console.log('Searching for:', query); // Log query pencarian untuk debugging
+            const pages = document.querySelectorAll('.page');
+            const lowerCaseQuery = query.toLowerCase();
+            let found = false;
+
+            pages.forEach((page, index) => {
+                const biodataEntry = biodata[index]; // Ambil data biodata untuk halaman saat ini
+                if (biodataEntry) {
+                    console.log('Checking page', index, 'for name', biodataEntry.nama); // Log nama yang diperiksa
+                    if (biodataEntry.nama.toLowerCase().includes(lowerCaseQuery)) {
+                        currentPage = index;
+                        found = true;
+                        // Hentikan pencarian jika ditemukan
+                        return;
+                    }
+                }
+            });
+
+            if (!found) {
+                alert('Nama tidak ditemukan');
+            } else {
+                updatePages();
+            }
+        }
+
+        // Event listener untuk input pencarian
+        document.getElementById('searchInput').addEventListener('input', function () {
+            searchPages(this.value);
+        });
+
+        // Event listener untuk klik pada main container
+        document.querySelector('main').addEventListener('click', function (event) {
+            const mainWidth = this.clientWidth;
+            const clickX = event.clientX - this.getBoundingClientRect().left;
+
+            if (clickX > mainWidth / 2) { // Klik kanan
+                if (currentPage < document.querySelectorAll('.page').length - 1) {
+                    currentPage++;
+                } else {
+                    currentPage = 0;
+                }
+            } else { // Klik kiri
+                if (currentPage > 0) {
+                    currentPage--;
+                } else {
+                    currentPage = document.querySelectorAll('.page').length - 1;
+                }
+            }
+
+            updatePages();
+        });
+
+        // Load pages when the page is loaded
+        window.addEventListener('load', loadPages);
+    </script>
+</body>
+
+</html>
