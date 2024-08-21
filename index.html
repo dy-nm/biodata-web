@@ -7,10 +7,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <title>Biodata Web</title>
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
         body {
-            font-family: 'Times New Roman';
             margin: 0;
             padding: 0;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: 'Times New Roman';
             background-color: #F8F1F1;
             background-image: url('img/pexels-karolina-grabowska-6634140.jpg');
             display: flex;
@@ -42,17 +51,17 @@
             align-items: center;
             perspective: 1000px;
             position: relative;
+            width: 100%;
+            max-width: 100%;
+            overflow-x: hidden;
         }
 
         .page {
             width: 320px;
-            height: 80%;
+            height: 90%;
             position: absolute;
             backface-visibility: hidden;
             transition: transform 1s ease, z-index 1s ease;
-        }
-
-        .page1, .page2, .page3 {
             background-color: #fff;
             border-radius: 10px;
             box-shadow: 11px 19px 2px rgba(0, 0, 0, 0.1);
@@ -99,7 +108,8 @@
             margin-bottom: 0px;
         }
 
-        .profile h2, .biodata h2 {
+        .profile h2,
+        .biodata h2 {
             font-size: 24px;
             margin-bottom: 10px;
             color: #2980b9;
@@ -112,18 +122,21 @@
             color: #fff;
         }
 
-        .biodata-diri, .biodata-d2 {
+        .biodata-diri,
+        .biodata-d2 {
             width: 100%;
             border-collapse: collapse;
         }
 
-        .biodata-diri td, .biodata-d2 td {
+        .biodata-diri td,
+        .biodata-d2 td {
             padding: 5px;
             border: 1px solid black;
             color: black;
         }
 
-        .biodata-diri td:first-child, .biodata-d2 td:first-child {
+        .biodata-diri td:first-child,
+        .biodata-d2 td:first-child {
             width: 100px;
             margin-top: 70px;
         }
@@ -162,27 +175,29 @@
             margin: 20px 10px 30px 5px;
         }
 
-        @media (max-width: 600px) {
+        /* Media Queries untuk Responsivitas */
+        @media (min-width: 400px) and (max-width: 647px) {
             .page {
-                width: 90%;
-                height: 70%;
+                width: 70%;
+                height: 100%;
             }
 
             .profile img {
-                width: 100px;
-                height: 100px;
+                width: 120px;
+                height: 120px;
             }
 
             h1 {
-                font-size: 24px;
+                font-size: 26px;
             }
 
-            .profile h2, .biodata h2 {
+            .profile h2,
+            .biodata h2 {
                 font-size: 20px;
             }
 
             .biodata3 h1 {
-                font-size: 20px;
+                font-size: 22px;
             }
 
             .biodata3 .centered {
@@ -194,38 +209,38 @@
             }
         }
 
-        @media (min-width: 601px) and (max-width: 1024px) {
+        @media (min-width: 1025px) and (max-width: 1440px) {
             .page {
-                width: 50%;
-                height: 70%;
+                width: 60%;
+                height: 100%;
             }
 
             .profile img {
-                width: 125px;
-                height: 125px;
+                width: 140px;
+                height: 140px;
             }
 
             h1 {
-                font-size: 28px;
+                font-size: 30px;
             }
 
-            .profile h2, .biodata h2 {
-                font-size: 22px;
+            .profile h2,
+            .biodata h2 {
+                font-size: 24px;
             }
 
             .biodata3 h1 {
-                font-size: 22px;
+                font-size: 24px;
             }
 
             .biodata3 .centered {
-                font-size: 20px;
+                font-size: 22px;
             }
 
             footer p {
                 font-size: 16px;
             }
         }
-
     </style>
 </head>
 
@@ -238,7 +253,9 @@
             <div class="profile">
                 <img src="img/Picsart_FIX.jpg" alt="Profile Picture">
                 <h2>About Me</h2>
-                <p>perkenalkan temen temen semua nama aku dedy dari prodi teknik informatika, fakultas Teknik dengan NIM:240411100115. nama lengkap aku Dedy Nurohim untuk Tempat Tanggal Lahir  ku di Lamongan 15 Desember 2004 lalu untuk  alamatku di Lamongan, dan temen" bisa hubungi aku di nomor 085730190883</p>
+                <p>perkenalkan temen temen semua nama aku dedy dari prodi teknik informatika, fakultas Teknik dengan
+                    NIM:240411100115. nama lengkap aku Dedy Nurohim untuk Tempat Tanggal Lahir ku di Lamongan 15
+                    Desember 2004 lalu untuk alamatku di Lamongan, dan temen" bisa hubungi aku di nomor 085730190883</p>
                 <b>Klik di sini</b>
             </div>
         </div>
@@ -289,7 +306,7 @@
             } else {
                 currentPage = 0;
             }
-            
+
             pages.forEach((page, index) => {
                 if (index < currentPage) {
                     page.style.transform = `rotateY(-180deg)`;

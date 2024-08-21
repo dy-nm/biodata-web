@@ -7,6 +7,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <title>Biodata Angkatan Informatika 2024</title>
     <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
         body {
             font-family: 'Times New Roman';
             margin: 0;
@@ -19,12 +26,16 @@
             max-width: 100%;
             width: 100%;
             overflow-x: hidden;
+            /* Mencegah scroll horizontal */
+            overflow-y: auto;
+            /* Izinkan scroll vertikal */
         }
 
         header {
             padding: 20px;
             text-align: center;
             margin-bottom: 0px;
+            width: 100%;
         }
 
         #searchInput {
@@ -52,12 +63,13 @@
             perspective: 1000px;
             position: relative;
             width: 100%;
+            padding: 20px;
         }
 
         .page {
             width: 90%;
             max-width: 320px;
-            height: 95%;
+            height: 100%;
             position: absolute;
             backface-visibility: hidden;
             transition: transform 1s ease, z-index 1s ease;
@@ -99,15 +111,17 @@
             z-index: 3;
         }
 
-        .profile img, .biodata3 img {
-            width: 150px;
-            height: 150px;
+        .profile img,
+        .biodata3 img {
+            width: 100px;
+            height: 100px;
             object-fit: cover;
             border-radius: 100%;
             margin-bottom: 0px;
         }
 
-        .profile h2, .biodata h2 {
+        .profile h2,
+        .biodata h2 {
             font-size: 24px;
             margin-bottom: 10px;
             color: #2980b9;
@@ -117,20 +131,24 @@
             padding: 20px;
             text-align: center;
             margin-top: auto;
+            width: 100%;
         }
 
-        .biodata-diri, .biodata-d2 {
+        .biodata-diri,
+        .biodata-d2 {
             width: 100%;
             border-collapse: collapse;
         }
 
-        .biodata-diri td, .biodata-d2 td {
+        .biodata-diri td,
+        .biodata-d2 td {
             padding: 5px;
             border: 1px solid black;
             color: black;
         }
 
-        .biodata-diri td:first-child, .biodata-d2 td:first-child {
+        .biodata-diri td:first-child,
+        .biodata-d2 td:first-child {
             width: 100px;
             margin-top: 70px;
         }
@@ -159,46 +177,48 @@
             background-color: #0056b3;
         }
 
-        /* Media Queries untuk Responsivitas */
+        /* Media Query untuk perangkat mobile */
         @media (max-width: 768px) {
-            .page {
+            body {
+                flex-direction: column;
+                align-items: center;
                 width: 100%;
-                max-width: 100%;
-                height: auto;
-                padding: 15px;
+                /* Pastikan body tidak melampaui lebar layar */
             }
 
-            .profile img, .biodata3 img {
-                width: 100px;
-                height: 100px;
-            }
-
-            header h1 {
-                font-size: 24px;
-            }
-
-            footer {
+            main {
+                width: 100%;
                 padding: 10px;
+            }
+
+            .page {
+                width: 95%;
+                max-width: 280px;
+                height: 112%;
+                padding: 15px;
             }
         }
 
-        @media (max-width: 480px) {
-            header h1 {
-                font-size: 20px;
-            }
 
-            p {
-                font-size: 14px;
-            }
+        .profile img,
+        .biodata3 img {
+            width: 80px;
+            height: 80px;
+        }
 
-            .button {
-                padding: 8px 15px;
-                font-size: 14px;
-            }
+        .profile h2,
+        .biodata h2 {
+            font-size: 20px;
+        }
 
-            .page {
-                padding: 10px;
-            }
+        p {
+            font-size: 14px;
+            margin: 15px 10px 20px 5px;
+        }
+
+        .button {
+            font-size: 14px;
+            padding: 8px 15px;
         }
     </style>
 </head>
@@ -215,7 +235,9 @@
             <div class="profile">
                 <img src="img/Picsart_FIX.jpg" alt="Profile Picture">
                 <h2>About Me</h2>
-                <p>perkenalkan temen temen semua nama aku dedy dari prodi teknik informatika, fakultas Teknik dengan NIM:240411100115. nama lengkap aku Dedy Nurohim untuk Tempat Tanggal Lahir  ku di Lamongan 15 Desember 2004 lalu untuk  alamatku di Lamongan, dan temen" bisa hubungi aku di nomor 085730190883</p>
+                <p>perkenalkan temen temen semua nama aku dedy dari prodi teknik informatika, fakultas Teknik dengan
+                    NIM:240411100115. nama lengkap aku Dedy Nurohim untuk Tempat Tanggal Lahir ku di Lamongan 15
+                    Desember 2004 lalu untuk alamatku di Lamongan, dan temen" bisa hubungi aku di nomor 085730190883</p>
             </div>
         </div>
         <div class="page page2">
