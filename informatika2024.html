@@ -120,6 +120,19 @@
             margin-bottom: 0px;
         }
 
+        .biodata3 a img {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+            max-width: 10%; /* Menyesuaikan ukuran gambar */
+            height: auto;
+             position: absolute;
+            top: 95%;
+            left: 45%;
+            transform: translate(-50%, -50%);
+        }
+
         .profile h2,
         .biodata h2 {
             font-size: 24px;
@@ -334,6 +347,7 @@
                             <td>${data.kelompok}</td>
                         </tr>
                     </table>
+                    <a href="whatsapp://send?text=Hello&phone=+62${data.no}"><img src="https://seeklogo.com/images/W/whatsapp-logo-112413FAA7-seeklogo.com.png"></a>
                 </div>
             `;
 
