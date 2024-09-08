@@ -58,7 +58,7 @@
 
         .page {
             width: 320px;
-            height: 95%;
+            height: 110%;
             position: absolute;
             backface-visibility: hidden;
             transition: transform 1s ease, z-index 1s ease;
@@ -112,10 +112,11 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            
-            max-width: 15%; /* Menyesuaikan ukuran gambar */
+
+            max-width: 15%;
+            /* Menyesuaikan ukuran gambar */
             height: auto;
-             position: absolute;
+            position: absolute;
             top: 65%;
             left: 45%;
             transform: translate(-50%, -50%);
@@ -202,6 +203,69 @@
             text-transform: capitalize;
             margin: 20px 10px 30px 5px;
         }
+
+        /* Styles for Contact Form */
+        .contact-form-container {
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-form-container h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #2980b9;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            color: #333;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            height: 150px;
+        }
+
+        .submit-button {
+            background: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .submit-button:hover {
+            background: #0056b3;
+        }
+
 
         /* Media Queries untuk Responsivitas */
         @media (min-width: 400px) and (max-width: 647px) {
@@ -322,6 +386,34 @@
                 <a href="informatika2024.html" class="centered">klik di sini</a>
             </div>
         </div>
+        <div class="page page4">
+            <div class="contact-form-container">
+                <h2>Contact Us</h2>
+                <form action="https://api.web3forms.com/submit" method="POST" class="contact-form">
+                    <input type="hidden" name="access_key" value="cb52dcd8-6518-48e3-8820-dcd7ae8a169a">
+
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required placeholder="Your Name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required placeholder="Your Email">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" required placeholder="Your Message"></textarea>
+                    </div>
+
+                    <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
+                    <button type="submit" class="submit-button">Submit</button>
+                </form>
+            </div>
+        </div>
+
     </main>
     <footer>
         <section>
@@ -333,14 +425,8 @@
     <script>
         let currentPage = 0;
 
-        document.querySelector('main').addEventListener('click', function () {
+        function updatePages() {
             const pages = document.querySelectorAll('.page');
-            if (currentPage < pages.length - 1) {
-                currentPage++;
-            } else {
-                currentPage = 0;
-            }
-
             pages.forEach((page, index) => {
                 if (index < currentPage) {
                     page.style.transform = `rotateY(-180deg)`;
@@ -350,8 +436,35 @@
                     page.style.transform = `rotateY(180deg)`;
                 }
             });
+        }
+
+        function handlePageClick(event) {
+            const pages = document.querySelectorAll('.page');
+            const clickedPage = Array.from(pages).find(page => page.contains(event.target));
+
+            // Jika halaman yang diklik adalah halaman formulir (page4), jangan beralih halaman
+            if (clickedPage && clickedPage.classList.contains('page4')) {
+                return;
+            }
+
+            if (currentPage < pages.length - 1) {
+                currentPage++;
+            } else {
+                currentPage = 0;
+            }
+
+            updatePages();
+        }
+
+        document.querySelector('main').addEventListener('click', handlePageClick);
+
+        // Load pages when the page is loaded
+        window.addEventListener('load', function () {
+            // Initialize the pages here if needed
+            updatePages();
         });
     </script>
+
 </body>
 
 </html>
