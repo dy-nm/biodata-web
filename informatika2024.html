@@ -47,6 +47,15 @@
             border-radius: 5px;
         }
 
+        #groupSelect {
+            margin-top: 10px;
+            padding: 10px;
+            width: 80%;
+            max-width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
         h1 {
             font-size: 32px;
             color: #fff;
@@ -121,17 +130,40 @@
         }
 
         .biodata3 a img {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            
-            max-width: 10%; /* Menyesuaikan ukuran gambar */
+            display: block;
+            max-width: 10%;
+            /* Menyesuaikan ukuran gambar */
             height: auto;
-             position: absolute;
+            position: absolute;
             top: 95%;
-            left: 50%;
+            left: 48%;
             transform: translate(-50%, -50%);
+            border-radius: 50%;
+            /* Membuat gambar berbentuk bulat */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            /* Efek bayangan untuk kedalaman */
+            transition: transform 0.3s ease, filter 0.3s ease, box-shadow 0.3s ease;
+            /* Transisi untuk efek zoom, filter, dan bayangan */
         }
+
+        .biodata3 a img:hover {
+            transform: translate(-50%, -50%) scale(1.1);
+            /* Zoom gambar saat dihover */
+            filter: brightness(1.2) hue-rotate(15deg);
+            /* Mencerahkan dan memberikan sedikit rotasi warna saat dihover */
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+            /* Meningkatkan bayangan saat dihover */
+        }
+
+        .biodata3 a img:active {
+            transform: translate(-50%, -50%) scale(0.9);
+            /* Zoom keluar gambar saat diklik */
+            filter: brightness(1) hue-rotate(180deg) sepia(1);
+            /* Mengubah warna gambar saat diklik */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            /* Mengurangi bayangan saat diklik */
+        }
+
 
         .profile h2,
         .biodata h2 {
@@ -258,6 +290,23 @@
         <p>Teknik Informatika</p>
         <a href="index.html" class="button">Kembali</a>
         <input type="text" id="searchInput" placeholder="Cari berdasarkan nama lengkap..." />
+        <select id="groupSelect">
+            <option value="">Semua</option>
+            <!-- Option values harus disesuaikan dengan kelompok yang ada -->
+            <option value="1">Kelompok 1</option>
+            <option value="2">Kelompok 2</option>
+            <option value="3">Kelompok 3</option>
+            <option value="4">Kelompok 4</option>
+            <option value="5">Kelompok 5</option>
+            <option value="6">Kelompok 6</option>
+            <option value="7">Kelompok 7</option>
+            <option value="8">Kelompok 8</option>
+            <option value="9">Kelompok 9</option>
+            <option value="10">Kelompok 10</option>
+            <option value="11">Kelompok 11</option>
+            <option value="12">Kelompok 12</option>
+            <!-- Tambahkan opsi lain sesuai kebutuhan -->
+        </select>
     </header>
     <main id="pagesContainer">
         <div class="page page1">
@@ -318,38 +367,38 @@
             page.classList.add(`page${index + 1}`);
 
             page.innerHTML = `
-                <div class="biodata3">
-                    <h2>Biodata ${index + 1}</h2>
-                    <img src="${data.fotoselfie}" alt="Profile Picture">
-                    <table class="biodata-d2">
-                        <tr>
-                            <td>Nama Lengkap</td>
-                            <td>${data.nama}</td>
-                        </tr>
-                        <tr>
-                            <td>NIM</td>
-                            <td>${data.nim}</td>
-                        </tr>
-                        <tr>
-                            <td>No Hp</td>
-                            <td>${data.no}</td>
-                        </tr>
-                        <tr>
-                            <td>TTL</td>
-                            <td>${data.ttl}</td>
-                        </tr>
-                        <tr>
-                            <td>Alamat</td>
-                            <td>${data.alamat}</td>
-                        </tr>
-                        <tr>
-                            <td>Kelompok</td>
-                            <td>${data.kelompok}</td>
-                        </tr>
-                    </table>
-                    <a href="whatsapp://send?text=Hello&phone=+62${data.no}"><img src="https://seeklogo.com/images/W/whatsapp-logo-112413FAA7-seeklogo.com.png"></a>
-                </div>
-            `;
+        <div class="biodata3">
+            <h2>Biodata ${index + 1}</h2>
+            <img src="${data.fotoselfie}" alt="Profile Picture">
+            <table class="biodata-d2">
+                <tr>
+                    <td>Nama Lengkap</td>
+                    <td>${data.nama}</td>
+                </tr>
+                <tr>
+                    <td>NIM</td>
+                    <td>${data.nim}</td>
+                </tr>
+                <tr>
+                    <td>No Hp</td>
+                    <td>${data.no}</td>
+                </tr>
+                <tr>
+                    <td>TTL</td>
+                    <td>${data.ttl}</td>
+                </tr>
+                <tr>
+                    <td>Alamat</td>
+                    <td>${data.alamat}</td>
+                </tr>
+                <tr>
+                    <td>Kelompok</td>
+                    <td>${data.kelompok}</td>
+                </tr>
+            </table>
+            <a href="whatsapp://send?text=Hello&phone=+62${data.no}"><img src="https://seeklogo.com/images/W/whatsapp-logo-112413FAA7-seeklogo.com.png"></a>
+        </div>
+    `;
 
             return page;
         }
@@ -363,7 +412,13 @@
                     const pagesContainer = document.getElementById('pagesContainer');
                     pagesContainer.innerHTML = ''; // Clear existing pages
 
-                    data.forEach((entry, index) => {
+                    // Sort data by group
+                    const selectedGroup = document.getElementById('groupSelect').value;
+                    const sortedData = data.filter(entry =>
+                        !selectedGroup || entry.kelompok == selectedGroup
+                    );
+
+                    sortedData.forEach((entry, index) => {
                         const page = createPage(entry, index);
                         pagesContainer.appendChild(page);
                     });
@@ -418,6 +473,11 @@
             searchPages(this.value);
         });
 
+        // Event listener untuk dropdown pemilihan kelompok
+        document.getElementById('groupSelect').addEventListener('change', function () {
+            loadPages();
+        });
+
         // Event listener untuk klik pada main container
         document.querySelector('main').addEventListener('click', function (event) {
             const mainWidth = this.clientWidth;
@@ -440,8 +500,12 @@
             updatePages();
         });
 
+
+
         // Load pages when the page is loaded
         window.addEventListener('load', loadPages);
+
+
     </script>
 </body>
 
