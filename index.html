@@ -106,21 +106,46 @@
             object-fit: cover;
             border-radius: 100%;
             margin-bottom: 0px;
+            padding: 10px;
         }
 
         .biodata a img {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
+            display: block;
             max-width: 15%;
             /* Menyesuaikan ukuran gambar */
             height: auto;
             position: absolute;
-            top: 65%;
-            left: 45%;
+            top: 70%;
+            left: 48%;
             transform: translate(-50%, -50%);
+            border-radius: 50%;
+            /* Membuat gambar berbentuk bulat */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            /* Efek bayangan untuk kedalaman */
+            transition: transform 0.3s ease, filter 0.3s ease, box-shadow 0.3s ease;
+            /* Transisi untuk efek zoom, filter, dan bayangan */
         }
+
+        .biodata a img:hover {
+            transform: translate(-50%, -50%) scale(1.1);
+            /* Zoom gambar saat dihover */
+            filter: brightness(1.2) hue-rotate(15deg);
+            /* Mencerahkan dan memberikan sedikit rotasi warna saat dihover */
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+            /* Meningkatkan bayangan saat dihover */
+        }
+
+        .biodata a img:active {
+            transform: translate(-50%, -50%) scale(0.9);
+            /* Zoom keluar gambar saat diklik */
+            filter: brightness(1) hue-rotate(180deg) sepia(1);
+            /* Mengubah warna gambar saat diklik */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            /* Mengurangi bayangan saat diklik */
+        }
+
+
+
 
         .profile h2,
         .biodata h2 {
