@@ -106,6 +106,17 @@
             transform-origin: right;
         }
 
+        /* Menangani halaman berikutnya dengan aturan yang berbeda */
+        .page:nth-of-type(n+4) {
+            /* Aturan umum untuk halaman ke-4 dan seterusnya */
+            z-index: calc(4 - (n - 3));
+            /* Mengatur z-index berdasarkan urutan */
+            transform: rotateY(calc(180deg * (n - 3)));
+            /* Menyesuaikan transformasi rotasi */
+            transform-origin: left;
+            /* Misalnya, semua halaman memiliki origin yang sama */
+        }
+
         .flipped .page1 {
             transform: rotateY(-180deg);
             z-index: 1;
